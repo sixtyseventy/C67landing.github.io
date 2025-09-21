@@ -38,8 +38,31 @@ a{text-decoration:none;color:inherit}
 <div id="discord-stats"><i class="fas fa-users"></i><span id="memberCount">loading...</span></div>
 <div id="loadingOverlay"><i class="fas fa-spinner"></i><div id="loadingText">Verifying browser.</div><div class="tips" id="loadingTips">Please wait ;)</div></div>
 <div class="container">
-<a href="utility.html" class="project-link" data-name="c67 | utility"><div class="card"><i class="fas fa-tools"></i><h2>C67 | utility</h2><div class="subtitle">Webhook Spammer, Deleter, and Customizer tool :3</div><p>discord web tool :3</p></p><div class="notification">Updated (v1.2)</div></div></a>
-<div class="card coming-soon" data-name="coming soon"><i class="fas fa-hourglass-half"></i><h2>Coming Soon</h2><div class="subtitle">maybe a executor, who knows?</div><p>Unknown</p><div class="notification">⏳ Coming Soon: unknown</div></div>
+<a href="utility.html" class="project-link" data-name="c67 | utility">
+  <div class="card">
+    <i class="fas fa-tools"></i>
+    <h2>C67 | Utility</h2>
+    <div class="subtitle">Webhook Spammer, Deleter, and Customizer tool :3</div>
+    <p>Discord web tool :3</p>
+    <div class="notification">Updated (v1.2)</div>
+  </div>
+</a>
+<a href="botutil.html" class="project-link" data-name="c67 | bot utility">
+  <div class="card">
+    <i class="fas fa-robot"></i>
+    <h2>C67 | Bot Utility</h2>
+    <div class="subtitle">Manage and automate Discord bots easily</div>
+    <p>Discord bot tool :3</p>
+    <div class="notification">New!</div>
+  </div>
+</a>
+<div class="card coming-soon" data-name="coming soon">
+  <i class="fas fa-hourglass-half"></i>
+  <h2>Coming Soon</h2>
+  <div class="subtitle">Maybe an executor, who knows?</div>
+  <p>Unknown</p>
+  <div class="notification">⏳ Coming Soon: unknown</div>
+</div>
 </div>
 <div class="buttons">
 <a href="https://discord.gg/bV9thz2MHT" target="_blank" class="button discord"><i class="fab fa-discord"></i> Join our Discord for updates</a>
@@ -47,8 +70,31 @@ a{text-decoration:none;color:inherit}
 </div>
 <script>
 const tips=["join discord to know when new projects are added or something else!","stay tuned for updates and cool features!","share our projects please :'(","didyblud"]
-document.querySelectorAll('.project-link').forEach(link=>{link.addEventListener('click',function(e){e.preventDefault();const overlay=document.getElementById('loadingOverlay');const loadingText=document.getElementById('loadingText');const tipsText=document.getElementById('loadingTips');const projectName=this.dataset.name.toLowerCase();loadingText.textContent="loading, "+projectName;tipsText.textContent=tips[Math.floor(Math.random()*tips.length)];overlay.style.display='flex';setTimeout(()=>{window.location.href=this.href},1500)})})
-async function fetchDiscordMembers(){const serverId="1400467726920843364";const url=`https://discord.com/api/guilds/${serverId}/widget.json`;try{const res=await fetch(url);if(!res.ok)throw new Error("Failed to fetch widget data");const data=await res.json();document.getElementById("memberCount").textContent=`${data.presence_count} members online`}catch(err){document.getElementById("memberCount").textContent="couldn't load :("}}
+document.querySelectorAll('.project-link').forEach(link=>{
+  link.addEventListener('click',function(e){
+    e.preventDefault();
+    const overlay=document.getElementById('loadingOverlay');
+    const loadingText=document.getElementById('loadingText');
+    const tipsText=document.getElementById('loadingTips');
+    const projectName=this.dataset.name.toLowerCase();
+    loadingText.textContent="loading, "+projectName;
+    tipsText.textContent=tips[Math.floor(Math.random()*tips.length)];
+    overlay.style.display='flex';
+    setTimeout(()=>{window.location.href=this.href},1500)
+  })
+})
+async function fetchDiscordMembers(){
+  const serverId="1400467726920843364";
+  const url=`https://discord.com/api/guilds/${serverId}/widget.json`;
+  try{
+    const res=await fetch(url);
+    if(!res.ok)throw new Error("Failed to fetch widget data");
+    const data=await res.json();
+    document.getElementById("memberCount").textContent=`${data.presence_count} members online`
+  }catch(err){
+    document.getElementById("memberCount").textContent="couldn't load :("
+  }
+}
 fetchDiscordMembers()
 </script>
 </body>
